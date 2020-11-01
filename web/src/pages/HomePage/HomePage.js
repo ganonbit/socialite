@@ -1,18 +1,12 @@
-import { Link, routes } from '@redwoodjs/router';
-import { Heading, Text, Code, Button } from '@chakra-ui/core';
+import { Text, Code } from '@chakra-ui/core';
+import MainLayout from 'src/layouts/MainLayout';
 
 const HomePage = () => {
   return (
     <>
-      <Heading>HomePage</Heading>
+      <MainLayout>HomePage</MainLayout>
       <Text>
         Find me in <Code>./web/src/pages/HomePage/HomePage.js</Code>
-      </Text>
-      <Text>
-        My default route is named <Code>home</Code>, link to me with
-        <Link to={routes.home()}>
-          <Button>Home</Button>
-        </Link>
       </Text>
     </>
   );

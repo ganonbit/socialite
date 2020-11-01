@@ -1,6 +1,6 @@
 // https://prettier.io/docs/en/options.html
 module.exports = {
-  trailingComma: 'es5',
+  trailingComma: "es5",
   bracketSpacing: true,
   tabWidth: 2,
   semi: true,
@@ -8,10 +8,10 @@ module.exports = {
   jsxSingleQuote: true,
   useTabs: false,
   singleQuote: true,
-  arrowParens: 'always',
+  arrowParens: "always",
   overrides: [
     {
-      files: 'Routes.js',
+      files: "Routes.js",
       options: {
         printWidth: 200,
       },
