@@ -6,9 +6,12 @@ const MainLayout = ({ children }) => {
     <>
       <Flex p='5' m='10'>
         <Box p={2}>
-          <Heading fontSize='sm'>Small</Heading>
-          <Heading fontSize='lg'>Large</Heading>
-          <Heading fontSize='2xl'>2XL</Heading>
+          <Heading size='sm'>size Small</Heading>
+          <Heading size='lg'>size Large</Heading>
+          <Heading size='2xl'>size 2XL</Heading>
+          <Heading fontSize='sm'>fontSize Small</Heading>
+          <Heading fontSize='lg'>fontSize Large</Heading>
+          <Heading fontSize='2xl'>fontSize 2XL</Heading>
         </Box>
         <Spacer />
         <Box>
