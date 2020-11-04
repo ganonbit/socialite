@@ -1,13 +1,14 @@
-import { Text, Code } from '@chakra-ui/core';
+import { Text } from '@chakra-ui/core';
+import HeaderLayout from 'src/layouts/HeaderLayout';
 import MainLayout from 'src/layouts/MainLayout';
 
 const HomePage = () => {
   return (
     <>
-      <MainLayout>HomePage</MainLayout>
-      <Text>
-        Find me in <Code>./web/src/pages/HomePage/HomePage.js</Code>
-      </Text>
+      <HeaderLayout>Welcome</HeaderLayout>
+      <MainLayout>
+        <Text>homepage yee</Text>
+      </MainLayout>
     </>
   );
 };

@@ -10,7 +10,7 @@ import customTheme from 'src/theme';
 ReactDOM.render(
   <FatalErrorBoundary page={FatalErrorPage}>
     <RedwoodProvider>
-      <ChakraProvider theme={customTheme}>
+      <ChakraProvider>
         <Routes />
       </ChakraProvider>
     </RedwoodProvider>
