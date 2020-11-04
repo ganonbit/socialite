@@ -15,5 +15,8 @@
   "engines": {
     "node": ">=12",
     "yarn": ">=1.15"
+  },
+  "dependencies": {
+    "@redwoodjs/cli": "^0.20.0"
   }
 }

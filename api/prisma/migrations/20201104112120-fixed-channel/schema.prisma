@@ -1,0 +1,131 @@
+datasource DS {
+  // optionally set multiple providers
+  // example: provider = ["sqlite", "postgresql"]
+  provider = "postgresql"
+  url = "***"
+}
+
+generator client {
+  provider      = "prisma-client-js"
+  binaryTargets = ["native", "rhel-openssl-1.0.x"]
+}
+
+// Define your own datamodels here and run `yarn redwood db save` to create
+// migrations for them.
+
+//Enums
+enum Role {
+  USER
+  MODERATOR
+  SUPER_MODERATOR
+  ADMIN
+}
+
+enum Social {
+  FACEBOOK
+  TWITTER
+  DEVTO
+  LINKEDIN
+  YOUTUBE
+  PERSONAL
+  OTHER
+}
+
+enum UserState {
+  UNVERIFIED
+  VERIFIED
+  SOFT_BAN
+  PERMA_BAN
+  DISABLED
+}
+
+enum ContentState {
+  UNPUBLISHED
+  PUBLISHED
+  DRAFT
+  FLAGGED
+  DISABLED
+  DELETED
+}
+
+enum UserStatus {
+  OFFLINE
+  ONLINE
+  HIDDEN
+  OTHER
+}
+
+//Models
+model User {
+  id            String         @id @default(uuid())
+  createdAt     DateTime       @default(now())
+  email         String         @unique
+  username      String         @unique
+  firstName     String
+  lastName      String
+  birthday      DateTime?
+  bio           String?
+  image         String?
+  status        UserStatus     @default(OFFLINE)
+  state         UserState      @default(UNVERIFIED)
+  socialHandles SocialHandle[]
+  role          Role           @default(USER)
+  posts         Post[]         @relation
+  messages      Message[]
+  channels      Channel[]
+  comments      Comment[]
+}
+
+model Post {
+  id        Int          @id @default(autoincrement())
+  createdAt DateTime     @default(now())
+  updatedAt DateTime     @updatedAt
+  state     ContentState @default(UNPUBLISHED)
+  title     String
+  content   String
+  image     String?
+  url       String
+  author    User?        @relation(fields: [authorId], references: [id])
+  authorId  String?
+  comments  Comment[]
+}
+
+model Comment {
+  id        String       @id @default(uuid())
+  createdAt DateTime     @default(now())
+  updatedAt DateTime     @updatedAt
+  state     ContentState @default(UNPUBLISHED)
+  content   String
+  sentBy    User?        @relation(fields: [sentById], references: [id])
+  sentById  String?      @map("sentBy")
+  post      Post?        @relation(fields: [postId], references: [id])
+  postId    Int?         @map("post")
+}
+
+model Message {
+  id        String       @id @default(uuid())
+  createdAt DateTime     @default(now())
+  state     ContentState @default(UNPUBLISHED)
+  content   String
+  sentBy    User?        @relation(fields: [sentById], references: [id])
+  sentById  String?      @map("sentBy")
+  channel   Channel?     @relation(fields: [channelId], references: [id])
+  channelId String?      @map("channel")
+}
+
+model Channel {
+  id        String    @id @default(uuid())
+  users     User[]
+  messages  Message[]
+  createdAt DateTime  @default(now())
+}
+
+model SocialHandle {
+  id        Int      @id @default(autoincrement())
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  username  String
+  provider  Social[]
+  user      User?    @relation(fields: [userId], references: [id])
+  userId    String?
+}

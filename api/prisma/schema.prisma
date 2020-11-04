@@ -115,7 +115,8 @@ model Message {
 
 model Channel {
   id        String    @id @default(uuid())
-  users     User[]    @relation(references: [id])
+  title     String
+  users     User[]
   messages  Message[]
   createdAt DateTime  @default(now())
 }

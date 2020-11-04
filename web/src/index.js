@@ -1,7 +1,7 @@
 import ReactDOM from 'react-dom';
 import { RedwoodProvider, FatalErrorBoundary } from '@redwoodjs/web';
 import { ChakraProvider } from '@chakra-ui/core';
-import * as Sentry from '@sentry/browser';
+import * as Sentry from '@sentry/react';
 import { Integrations } from '@sentry/tracing';
 
 import FatalErrorPage from 'src/pages/FatalErrorPage';
