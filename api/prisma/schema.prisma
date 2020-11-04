@@ -16,17 +16,48 @@ generator client {
 //Enums
 enum Role {
   USER
+  MODERATOR
+  SUPER_MODERATOR
   ADMIN
 }
 
 enum Social {
-  USER
-  ADMIN
+  FACEBOOK
+  TWITTER
+  DEVTO
+  LINKEDIN
+  YOUTUBE
+  PERSONAL
+  OTHER
+}
+
+enum UserState {
+  UNVERIFIED
+  VERIFIED
+  SOFT_BAN
+  PERMA_BAN
+  DISABLED
+}
+
+enum ContentState {
+  UNPUBLISHED
+  PUBLISHED
+  DRAFT
+  FLAGGED
+  DISABLED
+  DELETED
+}
+
+enum UserStatus {
+  OFFLINE
+  ONLINE
+  HIDDEN
+  OTHER
 }
 
 //Models
 model User {
-  id            Int            @id @unique @default(uuid())
+  id            String         @id @default(uuid())
   createdAt     DateTime       @default(now())
   email         String         @unique
   username      String         @unique
@@ -35,56 +66,66 @@ model User {
   birthday      DateTime?
   bio           String?
   image         String?
-  imagePublicId String?
-  isOnline      Boolean        @default(false)
-  isVerified    Boolean        @default(false)
-  isBanned      Boolean        @default(false)
+  status        UserStatus     @default(OFFLINE)
+  state         UserState      @default(UNVERIFIED)
   socialHandles SocialHandle[]
   role          Role           @default(USER)
   posts         Post[]         @relation
-  messages      Message[]      @relation
-  followers     Follow[]       @relation
-  following     Follow[]       @relation
+  messages      Message[]
+  channels      Channel[]
+  comments      Comment[]
 }
 
 model Post {
-  id        Int      @id @default(autoincrement())
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
-  published Boolean  @default(false)
+  id        Int          @id @default(autoincrement())
+  createdAt DateTime     @default(now())
+  updatedAt DateTime     @updatedAt
+  state     ContentState @default(UNPUBLISHED)
   title     String
-  author    User?    @relation(fields: [authorId], references: [id])
-  authorId  Int?
+  content   String
+  image     String?
+  url       String
+  author    User?        @relation(fields: [authorId], references: [id])
+  authorId  String?
+  comments  Comment[]
+}
+
+model Comment {
+  id        String       @id @default(uuid())
+  createdAt DateTime     @default(now())
+  updatedAt DateTime     @updatedAt
+  state     ContentState @default(UNPUBLISHED)
+  content   String
+  sentBy    User?        @relation(fields: [sentById], references: [id])
+  sentById  String?      @map("sentBy")
+  post      Post?        @relation(fields: [postId], references: [id])
+  postId    Int?         @map("post")
 }
 
 model Message {
-  id        Int      @id @unique @default(uuid())
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
-  isSeen    Boolean  @default(false)
-  message   String
-  sender    User?    @relation
-  receiver  User?    @relation
+  id        String       @id @default(uuid())
+  createdAt DateTime     @default(now())
+  state     ContentState @default(UNPUBLISHED)
+  content   String
+  sentBy    User?        @relation(fields: [sentById], references: [id])
+  sentById  String?      @map("sentBy")
+  channel   Channel?     @relation(fields: [channelId], references: [id])
+  channelId String?      @map("channel")
+}
+
+model Channel {
+  id        String    @id @default(uuid())
+  users     User[]    @relation(references: [id])
+  messages  Message[]
+  createdAt DateTime  @default(now())
 }
 
 model SocialHandle {
-  id            Int      @id @unique @default(uuid())
-  createdAt     DateTime @default(now())
-  updatedAt     DateTime @updatedAt
-  url           String
-  provider      Social
-  imagePublicId String?
-  user          User?    @relation(fields: [userId], references: [id])
-  userId        Int?
-}
-
-model Follow {
-  id            Int      @id @unique @default(uuid())
-  createdAt     DateTime @default(now())
-  updatedAt     DateTime @updatedAt
-  url           String
-  provider      Social
-  imagePublicId String?
-  user          User?    @relation(fields: [userId], references: [id])
-  userId        Int?
+  id        Int      @id @default(autoincrement())
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  username  String
+  provider  Social[]
+  user      User?    @relation(fields: [userId], references: [id])
+  userId    String?
 }
