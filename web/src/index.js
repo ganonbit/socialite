@@ -4,6 +4,10 @@ import { ChakraProvider } from '@chakra-ui/core';
 import * as Sentry from '@sentry/browser';
 import { Integrations } from '@sentry/tracing';
 
+import FatalErrorPage from 'src/pages/FatalErrorPage';
+import Routes from 'src/Routes';
+import customTheme from 'src/theme';
+
 Sentry.init({
   dsn: process.env.SENTRY_TOKEN,
   integrations: [new Integrations.BrowserTracing()],
@@ -12,10 +16,6 @@ Sentry.init({
   // for finer control
   tracesSampleRate: 1.0,
 });
-
-import FatalErrorPage from 'src/pages/FatalErrorPage';
-import Routes from 'src/Routes';
-import customTheme from 'src/theme';
 
 ReactDOM.render(
   <FatalErrorBoundary page={FatalErrorPage}>
