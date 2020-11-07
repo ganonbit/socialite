@@ -68,6 +68,10 @@ const Message = ({ message }) => {
               <td>{timeTag(message.createdAt)}</td>
             </tr>
             <tr>
+              <th>Updated at</th>
+              <td>{timeTag(message.updatedAt)}</td>
+            </tr>
+            <tr>
               <th>State</th>
               <td>{message.state}</td>
             </tr>

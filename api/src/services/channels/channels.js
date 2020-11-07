@@ -1,4 +1,5 @@
 import { db } from 'src/lib/db';
+import { foreignKeyReplacement } from 'src/lib/hackyFix';
 
 export const channels = () => {
   return db.channel.findMany();
@@ -12,13 +13,13 @@ export const channel = ({ id }) => {
 
 export const createChannel = ({ input }) => {
   return db.channel.create({
-    data: input,
+    data: foreignKeyReplacement(input),
   });
 };
 
 export const updateChannel = ({ id, input }) => {
   return db.channel.update({
-    data: input,
+    data: foreignKeyReplacement(input),
     where: { id },
   });
 };

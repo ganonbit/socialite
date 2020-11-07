@@ -7,9 +7,11 @@ export const schema = gql`
     title: String!
     content: String!
     image: String
-    url: String!
+    slug: String
     author: User
     authorId: String
+    metadata: JSON!
+    isFeatured: Boolean!
     comments: [Comment]!
   }
 
@@ -32,8 +34,10 @@ export const schema = gql`
     title: String!
     content: String!
     image: String
-    url: String!
+    slug: String
     authorId: String
+    metadata: JSON!
+    isFeatured: Boolean!
   }
 
   input UpdatePostInput {
@@ -41,8 +45,10 @@ export const schema = gql`
     title: String
     content: String
     image: String
-    url: String
+    slug: String
     authorId: String
+    metadata: JSON
+    isFeatured: Boolean
   }
 
   type Mutation {

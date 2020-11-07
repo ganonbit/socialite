@@ -10,8 +10,10 @@ export const QUERY = gql`
       title
       content
       image
-      url
+      slug
       authorId
+      metadata
+      isFeatured
     }
   }
 `;

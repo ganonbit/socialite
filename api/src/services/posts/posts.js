@@ -1,4 +1,5 @@
 import { db } from 'src/lib/db';
+import { foreignKeyReplacement } from 'src/lib/hackyFix';
 
 export const posts = () => {
   return db.post.findMany();
@@ -12,13 +13,13 @@ export const post = ({ id }) => {
 
 export const createPost = ({ input }) => {
   return db.post.create({
-    data: input,
+    data: foreignKeyReplacement(input),
   });
 };
 
 export const updatePost = ({ id, input }) => {
   return db.post.update({
-    data: input,
+    data: foreignKeyReplacement(input),
     where: { id },
   });
 };

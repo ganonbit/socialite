@@ -12,8 +12,10 @@ export const QUERY = gql`
       title
       content
       image
-      url
+      slug
       authorId
+      metadata
+      isFeatured
     }
   }
 `;
@@ -27,8 +29,10 @@ const UPDATE_POST_MUTATION = gql`
       title
       content
       image
-      url
+      slug
       authorId
+      metadata
+      isFeatured
     }
   }
 `;

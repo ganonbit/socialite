@@ -7,6 +7,7 @@ export const QUERY = gql`
     messages {
       id
       createdAt
+      updatedAt
       state
       content
       sentById

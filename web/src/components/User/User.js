@@ -68,6 +68,10 @@ const User = ({ user }) => {
               <td>{timeTag(user.createdAt)}</td>
             </tr>
             <tr>
+              <th>Updated at</th>
+              <td>{timeTag(user.updatedAt)}</td>
+            </tr>
+            <tr>
               <th>Email</th>
               <td>{user.email}</td>
             </tr>

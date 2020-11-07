@@ -63,6 +63,7 @@ const UsersList = ({ users }) => {
           <tr>
             <th>Id</th>
             <th>Created at</th>
+            <th>Updated at</th>
             <th>Email</th>
             <th>Username</th>
             <th>First name</th>
@@ -81,6 +82,7 @@ const UsersList = ({ users }) => {
             <tr key={user.id}>
               <td>{truncate(user.id)}</td>
               <td>{timeTag(user.createdAt)}</td>
+              <td>{timeTag(user.updatedAt)}</td>
               <td>{truncate(user.email)}</td>
               <td>{truncate(user.username)}</td>
               <td>{truncate(user.firstName)}</td>

@@ -1,4 +1,4 @@
-import { Form, FormError, FieldError, Label, TextField, Submit } from '@redwoodjs/forms';
+import { Form, FormError, FieldError, Label, TextField, TextAreaField, CheckboxField, Submit } from '@redwoodjs/forms';
 
 const PostForm = (props) => {
   const onSubmit = (data) => {
@@ -63,17 +63,17 @@ const PostForm = (props) => {
         />
         <FieldError name='image' className='rw-field-error' />
 
-        <Label name='url' className='rw-label' errorClassName='rw-label rw-label-error'>
-          Url
+        <Label name='slug' className='rw-label' errorClassName='rw-label rw-label-error'>
+          Slug
         </Label>
         <TextField
-          name='url'
-          defaultValue={props.post?.url}
+          name='slug'
+          defaultValue={props.post?.slug}
           className='rw-input'
           errorClassName='rw-input rw-input-error'
           validation={{ required: true }}
         />
-        <FieldError name='url' className='rw-field-error' />
+        <FieldError name='slug' className='rw-field-error' />
 
         <Label name='authorId' className='rw-label' errorClassName='rw-label rw-label-error'>
           Author id
@@ -86,6 +86,30 @@ const PostForm = (props) => {
           validation={{ required: true }}
         />
         <FieldError name='authorId' className='rw-field-error' />
+
+        <Label name='metadata' className='rw-label' errorClassName='rw-label rw-label-error'>
+          Metadata
+        </Label>
+        <TextAreaField
+          name='metadata'
+          defaultValue={JSON.stringify(props.post?.metadata)}
+          className='rw-input'
+          errorClassName='rw-input rw-input-error'
+          validation={{ required: true }}
+          dataType='Json'
+        />
+        <FieldError name='metadata' className='rw-field-error' />
+
+        <Label name='isFeatured' className='rw-label' errorClassName='rw-label rw-label-error'>
+          Is featured
+        </Label>
+        <CheckboxField
+          name='isFeatured'
+          defaultChecked={props.post?.isFeatured}
+          className='rw-input'
+          errorClassName='rw-input rw-input-error'
+        />
+        <FieldError name='isFeatured' className='rw-field-error' />
 
         <div className='rw-button-group'>
           <Submit disabled={props.loading} className='rw-button rw-button-blue'>

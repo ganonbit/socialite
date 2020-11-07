@@ -1,4 +1,5 @@
 import { db } from 'src/lib/db';
+import { foreignKeyReplacement } from 'src/lib/hackyFix';
 
 export const socialHandles = () => {
   return db.socialHandle.findMany();
@@ -12,13 +13,13 @@ export const socialHandle = ({ id }) => {
 
 export const createSocialHandle = ({ input }) => {
   return db.socialHandle.create({
-    data: input,
+    data: foreignKeyReplacement(input),
   });
 };
 
 export const updateSocialHandle = ({ id, input }) => {
   return db.socialHandle.update({
-    data: input,
+    data: foreignKeyReplacement(input),
     where: { id },
   });
 };

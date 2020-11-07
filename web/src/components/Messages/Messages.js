@@ -63,6 +63,7 @@ const MessagesList = ({ messages }) => {
           <tr>
             <th>Id</th>
             <th>Created at</th>
+            <th>Updated at</th>
             <th>State</th>
             <th>Content</th>
             <th>Sent by id</th>
@@ -75,6 +76,7 @@ const MessagesList = ({ messages }) => {
             <tr key={message.id}>
               <td>{truncate(message.id)}</td>
               <td>{timeTag(message.createdAt)}</td>
+              <td>{timeTag(message.updatedAt)}</td>
               <td>{truncate(message.state)}</td>
               <td>{truncate(message.content)}</td>
               <td>{truncate(message.sentById)}</td>

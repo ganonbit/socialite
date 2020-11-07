@@ -1,4 +1,5 @@
 import { db } from 'src/lib/db';
+import { foreignKeyReplacement } from 'src/lib/hackyFix';
 
 export const comments = () => {
   return db.comment.findMany();
@@ -12,13 +13,13 @@ export const comment = ({ id }) => {
 
 export const createComment = ({ input }) => {
   return db.comment.create({
-    data: input,
+    data: foreignKeyReplacement(input),
   });
 };
 
 export const updateComment = ({ id, input }) => {
   return db.comment.update({
-    data: input,
+    data: foreignKeyReplacement(input),
     where: { id },
   });
 };

@@ -2,6 +2,7 @@ export const schema = gql`
   type Message {
     id: String!
     createdAt: DateTime!
+    updatedAt: DateTime!
     state: ContentState!
     content: String!
     sentBy: User

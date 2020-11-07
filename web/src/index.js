@@ -18,13 +18,13 @@ Sentry.init({
 });
 
 const App = (
-  <FatalErrorBoundary page={FatalErrorPage}>
-    <RedwoodProvider>
-      <ChakraProvider theme={customTheme}>
+  <ChakraProvider theme={customTheme}>
+    <FatalErrorBoundary page={FatalErrorPage}>
+      <RedwoodProvider>
         <Routes />
-      </ChakraProvider>
-    </RedwoodProvider>
-  </FatalErrorBoundary>
+      </RedwoodProvider>
+    </FatalErrorBoundary>
+  </ChakraProvider>
 );
 
 const rootElement = document.getElementById('redwood-app');

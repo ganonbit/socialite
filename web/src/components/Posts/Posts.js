@@ -68,8 +68,10 @@ const PostsList = ({ posts }) => {
             <th>Title</th>
             <th>Content</th>
             <th>Image</th>
-            <th>Url</th>
+            <th>Slug</th>
             <th>Author id</th>
+            <th>Metadata</th>
+            <th>Is featured</th>
             <th>&nbsp;</th>
           </tr>
         </thead>
@@ -83,8 +85,10 @@ const PostsList = ({ posts }) => {
               <td>{truncate(post.title)}</td>
               <td>{truncate(post.content)}</td>
               <td>{truncate(post.image)}</td>
-              <td>{truncate(post.url)}</td>
+              <td>{truncate(post.slug)}</td>
               <td>{truncate(post.authorId)}</td>
+              <td>{jsonTruncate(post.metadata)}</td>
+              <td>{checkboxInputTag(post.isFeatured)}</td>
               <td>
                 <nav className='rw-table-actions'>
                   <Link

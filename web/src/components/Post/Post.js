@@ -88,12 +88,20 @@ const Post = ({ post }) => {
               <td>{post.image}</td>
             </tr>
             <tr>
-              <th>Url</th>
-              <td>{post.url}</td>
+              <th>Slug</th>
+              <td>{post.slug}</td>
             </tr>
             <tr>
               <th>Author id</th>
               <td>{post.authorId}</td>
+            </tr>
+            <tr>
+              <th>Metadata</th>
+              <td>{jsonDisplay(post.metadata)}</td>
+            </tr>
+            <tr>
+              <th>Is featured</th>
+              <td>{checkboxInputTag(post.isFeatured)}</td>
             </tr>
           </tbody>
         </table>

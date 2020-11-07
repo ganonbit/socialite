@@ -7,6 +7,7 @@ export const QUERY = gql`
     message: message(id: $id) {
       id
       createdAt
+      updatedAt
       state
       content
       sentById
@@ -19,6 +20,7 @@ const UPDATE_MESSAGE_MUTATION = gql`
     updateMessage(id: $id, input: $input) {
       id
       createdAt
+      updatedAt
       state
       content
       sentById

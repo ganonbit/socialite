@@ -7,6 +7,7 @@ export const QUERY = gql`
     user: user(id: $id) {
       id
       createdAt
+      updatedAt
       email
       username
       firstName
@@ -25,6 +26,7 @@ const UPDATE_USER_MUTATION = gql`
     updateUser(id: $id, input: $input) {
       id
       createdAt
+      updatedAt
       email
       username
       firstName
