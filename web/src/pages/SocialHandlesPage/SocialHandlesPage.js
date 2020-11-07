@@ -1,11 +1,18 @@
+import HeaderLayout from 'src/layouts/HeaderLayout';
+import MainLayout from 'src/layouts/MainLayout';
 import SocialHandlesLayout from 'src/layouts/SocialHandlesLayout';
 import SocialHandlesCell from 'src/components/SocialHandlesCell';
 
-const SocialHandlesPage = () => {
+const SocialHandlesPage = ({ name }) => {
   return (
-    <SocialHandlesLayout>
-      <SocialHandlesCell />
-    </SocialHandlesLayout>
+    <>
+      <HeaderLayout>{name}</HeaderLayout>
+      <MainLayout>
+        <SocialHandlesLayout>
+          <SocialHandlesCell />
+        </SocialHandlesLayout>
+      </MainLayout>
+    </>
   );
 };
 

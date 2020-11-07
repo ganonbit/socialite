@@ -19,10 +19,13 @@
     "@redwoodjs/web": "^0.20.0",
     "@sentry/react": "^5.27.2",
     "@sentry/tracing": "^5.27.2",
+    "@theme-ui/presets": "^0.3.0",
     "framer-motion": "^2.9.4",
     "marked": "^1.2.2",
     "prop-types": "^15.7.2",
     "react": "^16.13.1",
-    "react-dom": "^16.13.1"
+    "react-dom": "^16.13.1",
+    "sass": "^1.29.0",
+    "sass-loader": "^10.0.5"
   }
 }

@@ -1,11 +1,18 @@
+import HeaderLayout from 'src/layouts/HeaderLayout';
+import MainLayout from 'src/layouts/MainLayout';
 import CommentsLayout from 'src/layouts/CommentsLayout';
 import EditCommentCell from 'src/components/EditCommentCell';
 
-const EditCommentPage = ({ id }) => {
+const EditCommentPage = ({ id, name }) => {
   return (
-    <CommentsLayout>
-      <EditCommentCell id={id} />
-    </CommentsLayout>
+    <>
+      <HeaderLayout>{name}</HeaderLayout>
+      <MainLayout>
+        <CommentsLayout>
+          <EditCommentCell id={id} />
+        </CommentsLayout>
+      </MainLayout>
+    </>
   );
 };
 

@@ -1,11 +1,18 @@
+import HeaderLayout from 'src/layouts/HeaderLayout';
+import MainLayout from 'src/layouts/MainLayout';
 import ChannelsLayout from 'src/layouts/ChannelsLayout';
 import NewChannel from 'src/components/NewChannel';
 
-const NewChannelPage = () => {
+const NewChannelPage = ({ name }) => {
   return (
-    <ChannelsLayout>
-      <NewChannel />
-    </ChannelsLayout>
+    <>
+      <HeaderLayout>{name}</HeaderLayout>
+      <MainLayout>
+        <ChannelsLayout>
+          <NewChannel />
+        </ChannelsLayout>
+      </MainLayout>
+    </>
   );
 };
 

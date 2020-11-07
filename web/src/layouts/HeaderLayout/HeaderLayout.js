@@ -6,21 +6,25 @@ const HeaderLayout = ({ children }) => {
     <>
       <Flex m='5'>
         <Box>
-          <Heading fontSize='2.25rem' letterSpacing='widest'>
+          <Heading size='xl' letterSpacing='wider'>
             Socialite
           </Heading>
-          <Heading as='h4' fontSize='1rem' lineHeight='1rem' letterSpacing='0.1rem'>
+          <Heading as='h4' size='xs' lineHeight='1rem' letterSpacing='widest'>
             redwood socialite
           </Heading>
         </Box>
         <Spacer />
         <Box>
           <Link to={routes.home()}>
-            <Button>Home</Button>
+            <Button mr={2}>Home</Button>
           </Link>
 
           <Link to={routes.about()}>
-            <Button>About</Button>
+            <Button mr={2}>About</Button>
+          </Link>
+
+          <Link to={routes.contact()}>
+            <Button>Contact</Button>
           </Link>
         </Box>
       </Flex>

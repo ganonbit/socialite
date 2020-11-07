@@ -1,11 +1,18 @@
+import HeaderLayout from 'src/layouts/HeaderLayout';
+import MainLayout from 'src/layouts/MainLayout';
 import PostsLayout from 'src/layouts/PostsLayout';
 import EditPostCell from 'src/components/EditPostCell';
 
-const EditPostPage = ({ id }) => {
+const EditPostPage = ({ id, name }) => {
   return (
-    <PostsLayout>
-      <EditPostCell id={id} />
-    </PostsLayout>
+    <>
+      <HeaderLayout>{name}</HeaderLayout>
+      <MainLayout>
+        <PostsLayout>
+          <EditPostCell id={id} />
+        </PostsLayout>
+      </MainLayout>
+    </>
   );
 };
 

@@ -1,11 +1,18 @@
+import HeaderLayout from 'src/layouts/HeaderLayout';
+import MainLayout from 'src/layouts/MainLayout';
 import CommentsLayout from 'src/layouts/CommentsLayout';
 import NewComment from 'src/components/NewComment';
 
-const NewCommentPage = () => {
+const NewCommentPage = ({ name }) => {
   return (
-    <CommentsLayout>
-      <NewComment />
-    </CommentsLayout>
+    <>
+      <HeaderLayout>{name}</HeaderLayout>
+      <MainLayout>
+        <CommentsLayout>
+          <NewComment />
+        </CommentsLayout>
+      </MainLayout>
+    </>
   );
 };
 

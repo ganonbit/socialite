@@ -1,11 +1,18 @@
+import HeaderLayout from 'src/layouts/HeaderLayout';
+import MainLayout from 'src/layouts/MainLayout';
 import PostsLayout from 'src/layouts/PostsLayout';
 import NewPost from 'src/components/NewPost';
 
-const NewPostPage = () => {
+const NewPostPage = ({ name }) => {
   return (
-    <PostsLayout>
-      <NewPost />
-    </PostsLayout>
+    <>
+      <HeaderLayout>{name}</HeaderLayout>
+      <MainLayout>
+        <PostsLayout>
+          <NewPost />
+        </PostsLayout>
+      </MainLayout>
+    </>
   );
 };
 

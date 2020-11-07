@@ -1,11 +1,18 @@
+import HeaderLayout from 'src/layouts/HeaderLayout';
+import MainLayout from 'src/layouts/MainLayout';
 import MessagesLayout from 'src/layouts/MessagesLayout';
 import EditMessageCell from 'src/components/EditMessageCell';
 
-const EditMessagePage = ({ id }) => {
+const EditMessagePage = ({ id, name }) => {
   return (
-    <MessagesLayout>
-      <EditMessageCell id={id} />
-    </MessagesLayout>
+    <>
+      <HeaderLayout>{name}</HeaderLayout>
+      <MainLayout>
+        <MessagesLayout>
+          <EditMessageCell id={id} />
+        </MessagesLayout>
+      </MainLayout>
+    </>
   );
 };
 

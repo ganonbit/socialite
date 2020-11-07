@@ -2,10 +2,10 @@ import { Text } from '@chakra-ui/core';
 import HeaderLayout from 'src/layouts/HeaderLayout';
 import MainLayout from 'src/layouts/MainLayout';
 
-const AboutPage = () => {
+const AboutPage = ({ name }) => {
   return (
     <>
-      <HeaderLayout>About</HeaderLayout>
+      <HeaderLayout>{name}</HeaderLayout>
       <MainLayout>
         <Text>about me self</Text>
       </MainLayout>

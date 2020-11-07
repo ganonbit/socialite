@@ -1,11 +1,18 @@
+import HeaderLayout from 'src/layouts/HeaderLayout';
+import MainLayout from 'src/layouts/MainLayout';
 import MessagesLayout from 'src/layouts/MessagesLayout';
 import MessageCell from 'src/components/MessageCell';
 
-const MessagePage = ({ id }) => {
+const MessagePage = ({ id, name }) => {
   return (
-    <MessagesLayout>
-      <MessageCell id={id} />
-    </MessagesLayout>
+    <>
+      <HeaderLayout>{name}</HeaderLayout>
+      <MainLayout>
+        <MessagesLayout>
+          <MessageCell id={id} />
+        </MessagesLayout>
+      </MainLayout>
+    </>
   );
 };
 

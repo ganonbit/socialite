@@ -1,11 +1,18 @@
+import HeaderLayout from 'src/layouts/HeaderLayout';
+import MainLayout from 'src/layouts/MainLayout';
 import ChannelsLayout from 'src/layouts/ChannelsLayout';
 import ChannelsCell from 'src/components/ChannelsCell';
 
-const ChannelsPage = () => {
+const ChannelsPage = ({ name }) => {
   return (
-    <ChannelsLayout>
-      <ChannelsCell />
-    </ChannelsLayout>
+    <>
+      <HeaderLayout>{name}</HeaderLayout>
+      <MainLayout>
+        <ChannelsLayout>
+          <ChannelsCell />
+        </ChannelsLayout>
+      </MainLayout>
+    </>
   );
 };
 
