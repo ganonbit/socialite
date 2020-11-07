@@ -17,13 +17,20 @@ Sentry.init({
   tracesSampleRate: 1.0,
 });
 
-ReactDOM.render(
+const App = (
   <FatalErrorBoundary page={FatalErrorPage}>
     <RedwoodProvider>
       <ChakraProvider theme={customTheme}>
         <Routes />
       </ChakraProvider>
     </RedwoodProvider>
-  </FatalErrorBoundary>,
-  document.getElementById('redwood-app')
+  </FatalErrorBoundary>
 );
+
+const rootElement = document.getElementById('redwood-app');
+
+if (rootElement.hasChildNodes()) {
+  ReactDOM.hydrate(App, rootElement);
+} else {
+  ReactDOM.render(App, rootElement);
+}
