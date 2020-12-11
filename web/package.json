@@ -20,7 +20,7 @@
     "@sentry/react": "^5.27.2",
     "@sentry/tracing": "^5.27.2",
     "framer-motion": "^2.9.4",
-    "marked": "^1.2.2",
+    "marked": "^1.2.6",
     "prop-types": "^15.7.2",
     "react": "^17.0.1",
     "react-dom": "^16.13.1"
