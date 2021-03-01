@@ -17,6 +17,6 @@
     "yarn": ">=1.15"
   },
   "dependencies": {
-    "@redwoodjs/cli": "^0.21.0"
+    "@redwoodjs/cli": "^0.26.2"
   }
 }
