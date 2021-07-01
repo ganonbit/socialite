@@ -18,7 +18,7 @@
     "@redwoodjs/router": "^0.20.0",
     "@redwoodjs/web": "^0.21.0",
     "@sentry/react": "^5.27.2",
-    "@sentry/tracing": "^5.27.2",
+    "@sentry/tracing": "^6.8.0",
     "framer-motion": "^2.9.4",
     "marked": "^1.2.5",
     "prop-types": "^15.7.2",
